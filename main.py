@@ -16,7 +16,7 @@ sheet = client.open("expance-manager").sheet1  # or specify the sheet name
 # Access the Google Sheet
 # sheet = client.open("sheet1").worksheet("expance-manager")
 
-data = sheet.get_all_records()
+data = sheet.get_all_records() 
 # print(data)
 
 df = pd.DataFrame(data)
