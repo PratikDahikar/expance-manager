@@ -5,7 +5,7 @@ import pandas as pd
 import toml
 
 # Load the TOML file
-config = toml.load(".streamlit/secrets.toml")
+config = toml.load(st.secrets["google_sheets"])
 
 # Extract credentials from the TOML file
 google_sheets_creds = config['google_sheets']
