@@ -1,8 +1,8 @@
 import streamlit as st
-# import gspread
-# from oauth2client.service_account import ServiceAccountCredentials
-# import pandas as pd
-# import toml
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
+import toml
 
 # # Load the TOML file
 # config = toml.load(".streamlit/secrets.toml")
