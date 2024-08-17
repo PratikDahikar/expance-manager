@@ -30,4 +30,4 @@ import streamlit as st
 # df = pd.DataFrame(data)
 
 # st.write(df)
-st.write('hello pratik')
+st.write('welcome to strealit ...!!!')
