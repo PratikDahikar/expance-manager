@@ -18,7 +18,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(google_sheets_creds, [
 
 client = gspread.authorize(creds)
 
-Open the Google Sheet
+# Open the Google Sheet
 sheet = client.open("expance-manager").sheet1  # or specify the sheet name
 
 Access the Google Sheet
