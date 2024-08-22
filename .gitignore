@@ -23,7 +23,4 @@ venv/
 .vscode/
 
 .streamlit/
-
-.streamlit/
-
-.streamlit/
+test.py
