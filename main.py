@@ -1,35 +1,25 @@
 import streamlit as st
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+# import gspread
+# from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-import toml
+import numpy as np
 from datetime import datetime
-import json
-from utils import page_config
+from utils import page_config, get_spreadsheet
 
-page_config()
 
 try:
-    google_sheets_creds = st.secrets["google_sheets"]
-
-    # Setup credentials for gspread
-    creds = ServiceAccountCredentials.from_json_keyfile_dict(google_sheets_creds, [
-        "https://spreadsheets.google.com/feeds",
-        "https://www.googleapis.com/auth/drive"
-    ])
-    
-    client = gspread.authorize(creds)
-
-    # Open the Google Sheets document by name
-    spreadsheet = client.open("expense-manager")
+    page_config()
+    spreadsheet = get_spreadsheet()
 
     # Access specific worksheets by their names
-    sheet1 = spreadsheet.worksheet("sheet1")  # Replace "Sheet1" with your actual worksheet name
-    sheet2 = spreadsheet.worksheet("sheet2")  # Replace "Sheet2" with your actual worksheet name
+    sheet1 = spreadsheet.worksheet("sheet1")  
+    sheet2 = spreadsheet.worksheet("sheet2") 
 except Exception as e:
     print(e)
 
 # ---------------------------------------
+
+
 
 categories = {
     "Food"    : ["Lunch","Breakfast","Milk","Egg","Other"],
@@ -61,6 +51,7 @@ if submitted:
 ## show google sheet data 
 data = sheet1.get_all_records()
 df = pd.DataFrame(data)
+df.index = np.arange(1, len(df)+1)
 st.dataframe(df, use_container_width=True)
 
 
