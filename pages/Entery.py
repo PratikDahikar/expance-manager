@@ -17,7 +17,7 @@ except Exception as e:
 #-----------------------------------
 
 st.header('Daily Expense Enterys')
-save_btn = st.button('save')
+save_btn = st.button('save')   
 
 ## show google sheet data 
 sheet_data = sheet1.get_all_records()
