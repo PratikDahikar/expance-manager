@@ -17,6 +17,8 @@ except Exception as e:
 #-----------------------------------
 
 st.header('Daily Expense Enterys')
+save_btn = st.button('save')
+
 ## show google sheet data 
 sheet_data = sheet1.get_all_records()
 for rec in sheet_data:
@@ -29,5 +31,12 @@ sort_by_date = sorted(sheet_data, key=lambda item: item['Date'], reverse=True)
 df = pd.DataFrame(sort_by_date)
 df.index = np.arange(1, len(df)+1)
 edited_df = st.data_editor(df, use_container_width=True, num_rows="dynamic")
-# print(edited_df)
+sorted_df = edited_df.sort_values(by='Date', ascending=False)
+sorted_df['Date'] = sorted_df['Date'].astype(str)
+df_to_records =[['Category', "Item Name", "Cost","Date", "Description"]] + sorted_df.values.tolist()
+
+if save_btn:
+    # print(df_to_records)
+    sheet1.clear()
+    sheet1.append_rows(df_to_records)
 
