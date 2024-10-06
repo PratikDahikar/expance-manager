@@ -6,7 +6,6 @@ import numpy as np
 from datetime import datetime
 from utils import page_config, get_spreadsheet
 
-
 try:
     page_config()
     spreadsheet = get_spreadsheet()
